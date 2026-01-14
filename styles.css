@@ -1,0 +1,719 @@
+:root {
+				/* Colors */
+				--gray25:  #F8F8F8;
+				--gray35:  #F3F3F3;
+				--gray50:  #E9E9E9;
+				--gray75:  #DEDEDE;
+				--gray100: #CDCDCD;
+				
+				/* Weights */
+				--thin: 1px;
+				--book: 1.5px;
+				--medium: 3px;
+				
+				/* Font sizes */
+				--body: 24px;
+			}
+			
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#container {
+				width: 100%;
+				height: 100vh;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+			}
+			
+			#writing-area {
+				display: flex;
+				max-width: 600px;
+				flex-wrap: wrap;
+				height: 100%;
+				padding: 12px;
+				margin: 24px;
+				border: 1px solid var(--gray100);
+				border-radius: 8px;
+				overflow-y: scroll;
+				align-content: baseline;
+			}
+			
+			/* Keyboard */
+			
+			#keyboard {
+				max-width: 500px;
+				margin: 22px 6px;
+				background-color: var(--gray25);
+				display: flex;
+				justify-content: center;
+			}
+			
+			#keyboard .keyboard-view.view-visible {
+				display: inline-block;
+			}
+			
+			#keyboard .keyboard-view.view-invisible {
+				display: none;
+			}
+			
+			#keyboard .keyboard-row {
+				display: flex;
+				justify-content: center;
+			}
+			
+			#keyboard .menu-key-container {
+				display: flex;
+				position: relative;
+				justify-content: center;
+			}
+			
+			#keyboard .menu-key-container .key-menu {
+				background-color: var(--gray35);
+				border-radius: 4px;
+				display: flex;
+				position: absolute;
+				top: -55px;
+			}
+			
+			#keyboard .key {
+				display: inline-block;
+				background-color: var(--gray50);
+				border-radius: 4px;
+				min-height: 53px;
+				min-width: 34px;
+				margin: 6px 2.5px;
+				box-sizing: border-box;
+				align-content: center;
+				text-align: center;
+			}
+			
+			#keyboard .key:hover,
+			#keyboard .key:focus,
+			#keyboard .key:active {
+				background-color: var(--gray75);
+			}
+			
+			#keyboard .key.char-key {
+				padding-top: 6px;
+			}
+			
+			#keyboard .key.underline-key  {
+				background-color: var(--gray75);
+				min-width: 55px;
+				padding-top: 4px;
+			}
+			
+			#keyboard .key.backspace-key  {
+				background-color: var(--gray75);
+				min-width: 55px;
+				padding-top: 4px;
+			}
+			
+			#keyboard .key.close-keyboard-key {
+				background-color: var(--gray100);
+				border-radius: 27px;
+				min-width: 55px;
+				padding-top: 4px;
+			}
+			
+			#keyboard .key.swap-keyboards-key {
+				border-radius: 27px;
+				min-width: 55px;
+				padding-top: 4px;
+			}
+			
+			#keyboard .key.dot-key {
+				width: 100%;
+				padding-top: 4px;
+			}
+			
+			#keyboard .key.line-key {
+				background-color: var(--gray75);
+				padding-top: 4px;
+			}
+			
+			#keyboard .key.return-key {
+				background-color: var(--gray100);
+				border-radius: 27px;
+				min-width: 55px;
+				padding-top: 4px;
+			}
+			
+			/* Character styles */
+			
+			#writing-area .character {
+				--body: 32px;
+				margin-right: -5px;
+			}
+
+			#writing-area .character[char-code="00000000000000000"] {
+				width: 100%;
+				display: inline;
+				height: 30px;
+			}
+			
+			.character {
+				width: var(--body);
+				height: var(--body);
+				
+			}
+			
+			.character[scale="default"] {
+				--body: 24px;
+				width: var(--body);
+				height: var(--body);
+			}
+			
+			.character[weight="default"] {
+				--thin: 1px;
+				--book: 1.5;
+				--medium: 3px;
+			}
+			
+			.character line, .character circle {
+				stroke: #000;
+				stroke-width: var(--book);
+			}
+			
+			/* Binary */
+			/* c */
+			
+			.character[c="0"] .circle {
+				display: none;
+			}
+			
+			.character[c="1"] .circle {
+				display: inline-block;
+			}
+			
+			.character[c="1"][al="1"] .circle,
+			.character[c="1"][ar="1"] .circle,
+			.character[c="1"][au="1"] .circle,
+			.character[c="1"][ad="1"] .circle {
+				display: inline-block;
+				r: 25%;
+			}
+			
+			/* dc */
+			
+			.character[dc="0"] .dot-center {
+				display: none;
+			}
+			
+			.character[dc="1"] .dot-center {
+				display: inline-block;
+			}
+			
+			/* ol */
+			
+			.character[ol="0"] .overline {
+				display: none;
+			}
+			
+			.character[ol="1"] .overline {
+				display: inline-block;
+			}
+			
+			/* al */
+			
+			.character[al="0"] .angle-left1 {
+				display: none;
+			}
+			
+			.character[al="0"] .angle-left2 {
+				display: none;
+			}
+			
+			.character[al="1"] .angle-left1 {
+				display: inline-block;
+			}
+			
+			.character[al="1"] .angle-left2 {
+				display: inline-block;
+			}
+			
+			/* ar */
+			
+			.character[ar="0"] .angle-right1 {
+				display: none;
+			}
+			
+			.character[ar="0"] .angle-right2 {
+				display: none;
+			}
+			
+			.character[ar="1"] .angle-right1 {
+				display: inline-block;
+			}
+			
+			.character[ar="2"] .angle-right1 {
+				display: inline-block;
+			}
+			
+			/* au */
+			
+			.character[au="0"] .angle-up1 {
+				display: none;
+			}
+			
+			.character[au="0"] .angle-up2 {
+				display: none;
+			}
+			
+			.character[au="1"] .angle-up1 {
+				display: inline-block;
+			}
+			
+			.character[au="1"] .angle-up2 {
+				display: inline-block;
+			}
+			
+			/* ad */
+			
+			.character[ad="0"] .angle-down1 {
+				display: none;
+			}
+			
+			.character[ad="0"] .angle-down2 {
+				display: none;
+			}
+			
+			.character[ad="1"] .angle-down1 {
+				display: inline-block;
+			}
+			
+			.character[ad="1"] .angle-down2 {
+				display: inline-block;
+			}
+			
+			/* Ternary */
+			/* d1 */
+			.character[d1="0"] .dot1 {
+				display: none;
+			}
+			
+			.character[d1="0"] .dot1-line1 {
+				display: none;
+			}
+			
+			.character[d1="0"] .dot1-line2 {
+				display: none;
+			}
+			
+			.character[d1="1"] .dot1 {
+				display: inline-block;
+			}
+			
+			.character[d1="1"] .dot1-line1 {
+				display: none;
+			}
+			
+			.character[d1="1"] .dot1-line2 {
+				display: none;
+			}
+			
+			.character[dc="0"][d1="2"] .dot1 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d1="2"] .dot1-line1 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d1="2"] .dot1-line2 {
+				display: none;
+			}
+			
+			.character[dc="1"][d1="2"] .dot1 {
+				display: inline-block;
+			}
+			
+			.character[dc="1"][d1="2"] .dot1-line1 {
+					display: none;
+			}
+			
+			.character[dc="1"][d1="2"] .dot1-line2 {
+				display: inline-block;
+			}
+			
+			/* d2 */
+			
+			.character[d2="0"] .dot2 {
+				display: none;
+			}
+			
+			.character[d2="0"] .dot2-line1 {
+				display: none;
+			}
+			
+			.character[d2="0"] .dot2-line2 {
+				display: none;
+			}
+			
+			.character[d2="1"] .dot2 {
+				display: inline-block;
+			}
+			
+			.character[d2="1"] .dot2-line1 {
+				display: none;
+			}
+			
+			.character[d2="1"] .dot2-line2 {
+				display: none;
+			}
+			
+			.character[dc="0"][d2="2"] .dot2 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d2="2"] .dot2-line1 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d2="2"] .dot2-line2 {
+				display: none;
+			}
+			
+			.character[dc="1"][d2="2"] .dot2 {
+				display: inline-block;
+			}
+			
+			.character[dc="1"][d2="2"] .dot2-line1 {
+				display: none;
+			}
+			
+			.character[dc="1"][d2="2"] .dot2-line2 {
+				display: inline-block;
+			}
+			
+			/* d3 */
+			
+			.character[d3="0"] .dot3 {
+				display: none;
+			}
+			
+			.character[d3="0"] .dot3-line1 {
+				display: none;
+			}
+			
+			.character[d3="0"] .dot3-line2 {
+				display: none;
+			}
+			
+			.character[d3="1"] .dot3 {
+				display: inline-block;
+			}
+			
+			.character[d3="1"] .dot3-line1 {
+				display: none;
+			}
+			
+			.character[d3="1"] .dot3-line2 {
+				display: none;
+			}
+			
+			.character[dc="0"][d3="2"] .dot3 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d3="2"] .dot3-line1 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d3="2"] .dot3-line2 {
+				display: none;
+			}
+			
+			.character[dc="1"][d3="2"] .dot3 {
+				display: inline-block;
+			}
+			
+			.character[dc="1"][d3="2"] .dot3-line1 {
+				display: none;
+			}
+			
+			.character[dc="1"][d3="2"] .dot3-line2 {
+				display: inline-block;
+			}
+			
+			/* d4 */
+			
+			.character[d4="0"] .dot4 {
+				display: none;
+			}
+			
+			.character[d4="0"] .dot4-line1 {
+				display: none;
+			}
+			
+			.character[d4="0"] .dot4-line2 {
+				display: none;
+			}
+			
+			.character[d4="1"] .dot4 {
+				display: inline-block;
+			}
+			
+			.character[d4="1"] .dot4-line1 {
+				display: none;
+			}
+			
+			.character[d4="1"] .dot4-line2 {
+				display: none;
+			}
+			
+			.character[dc="0"][d4="2"] .dot4 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d4="2"] .dot4-line1 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d4="2"] .dot4-line2 {
+				display: none;
+			}
+			
+			.character[dc="1"][d4="2"] .dot4 {
+				display: inline-block;
+			}
+			
+			.character[dc="1"][d4="2"] .dot4-line1 {
+				display: none;
+			}
+			
+			.character[dc="1"][d4="2"] .dot4-line2 {
+				display: inline-block;
+			}
+			
+			/* d5 */
+			
+			.character[d5="0"] .dot5 {
+				display: none;
+			}
+			
+			.character[d5="0"] .dot5-line1 {
+				display: none;
+			}
+			
+			.character[d5="0"] .dot5-line2 {
+				display: none;
+			}
+			
+			.character[d5="1"] .dot5 {
+				display: inline-block;
+			}
+			
+			.character[d5="1"] .dot5-line1 {
+				display: none;
+			}
+			
+			.character[d5="1"] .dot5-line2 {
+				display: none;
+			}
+			
+			.character[dc="0"][d5="2"] .dot5 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d5="2"] .dot5-line1 {
+				display: inline-block;
+			}
+			
+			.character[dc="0"][d5="2"] .dot5-line2 {
+				display: none;
+			}
+			
+			.character[dc="1"][d5="2"] .dot5 {
+				display: inline-block;
+			}
+			
+			.character[dc="1"][d5="2"] .dot5-line1 {
+				display: none;
+			}
+			
+			.character[dc="1"][d5="2"] .dot5-line2 {
+				display: inline-block;
+			}
+			
+			/* ud */
+			
+			.character[ud="0"] .up-down-1 {
+				display: none;
+			}
+			
+			.character[ud="0"] .up-down-2 {
+				display: none;
+			}
+			
+			.character[ud="0"] .up-down-3 {
+				display: none;
+			}
+			
+			.character[ud="1"] .up-down-1 {
+				display: none;
+			}
+			
+			.character[ud="1"] .up-down-2 {
+				display: inline-block;
+			}
+			
+			.character[ud="1"] .up-down-3 {
+				display: none;
+			}
+			
+			.character[ud="2"] .up-down-1 {
+				display: inline-block;
+			}
+			
+			.character[ud="2"] .up-down-2 {
+				display: none;
+			}
+			
+			.character[ud="2"] .up-down-3 {
+				display: inline-block;
+			}
+			
+			/* lr */
+			
+			.character[lr="0"] .left-right-1 {
+				display: none;
+			}
+			
+			.character[lr="0"] .left-right-2 {
+				display: none;
+			}
+			
+			.character[lr="0"] .left-right-3 {
+				display: none;
+			}
+			
+			.character[lr="1"] .left-right-1 {
+				display: none;
+			}
+			
+			.character[lr="1"] .left-right-2 {
+				display: inline-block;
+			}
+			
+			.character[lr="1"] .left-right-3 {
+				display: none;
+			}
+			
+			.character[lr="2"] .left-right-1 {
+				display: inline-block;
+			}
+			
+			.character[lr="2"] .left-right-2 {
+				display: none;
+			}
+			
+			.character[lr="2"] .left-right-3 {
+				display: inline-block;
+			}
+			
+			/* dd */
+			
+			.character[dd="0"] .diag-down-1 {
+				display: none;
+			}
+			
+			.character[dd="0"] .diag-down-2 {
+				display: none;
+			}
+			
+			.character[dd="0"] .diag-down-3 {
+				display: none;
+			}
+			
+			.character[dd="1"] .diag-down-1 {
+				display: none;
+			}
+			
+			.character[dd="1"] .diag-down-2 {
+				display: inline-block;
+			}
+			
+			.character[dd="1"] .diag-down-3 {
+				display: none;
+			}
+			
+			.character[dd="2"] .diag-down-1 {
+				display: inline-block;
+			}
+			
+			.character[dd="2"] .diag-down-2 {
+				display: none;
+			}
+			
+			.character[dd="2"] .diag-down-3 {
+				display: inline-block;
+			}
+			
+			/* du */
+			
+			.character[du="0"] .diag-up-1 {
+				display: none;
+			}
+			
+			.character[du="0"] .diag-up-2 {
+				display: none;
+			}
+			
+			.character[du="0"] .diag-up-3 {
+				display: none;
+			}
+			
+			.character[du="1"] .diag-up-1 {
+				display: none;
+			}
+			
+			.character[du="1"] .diag-up-2 {
+				display: inline-block;
+			}
+			
+			.character[du="1"] .diag-up-3 {
+				display: none;
+			}
+			
+			.character[du="2"] .diag-up-1 {
+				display: inline-block;
+			}
+			
+			.character[du="2"] .diag-up-2 {
+				display: none;
+			}
+			
+			.character[du="2"] .diag-up-3 {
+				display: inline-block;
+			}
+			
+			/* ul */
+			.character[ul="0"] .underline-1 {
+				display: none;
+			}
+			
+			.character[ul="0"] .underline-2 {
+				display: none;
+			}
+			
+			.character[ul="1"] .underline-1 {
+				display: inline-block;
+			}
+			
+			.character[ul="1"] .underline-2 {
+				display: none;
+			}
+			
+			.character[ul="2"] .underline-1 {
+				display: inline-block;
+			}
+			
+			.character[ul="2"] .underline-2 {
+				display: inline-block;
+			}
