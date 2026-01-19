@@ -2,12 +2,12 @@
   "name": "Analog",
   "icons": [
     {
-      "src": "icons/192.png",
+      "src": "icons/icon192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
 	{
-      "src": "icons/512.png",
+      "src": "icons/icon512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
