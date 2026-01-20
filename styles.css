@@ -1,382 +1,522 @@
 :root {
-		/* Colors */
-		--gray25:  #F8F8F8;
-		--gray35:  #F3F3F3;
-		--gray50:  #E9E9E9;
-		--gray75:  #DEDEDE;
-		--gray100: #CDCDCD;
-		
-		/* Weights */
-		--thin: 1px;
-		--book: 1.5px;
-		--medium: 3px;
-	}
-	
-	body {
-		margin: 0;
-		padding: 0;
-		font-size: 16px;
-		
-		/* Font variables */
-		--font-size: 2em;
-		--font-primary: #2a2a2a;
-	}
-	
-	#container {
-		width: 100%;
-		height: 100vh;
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		flex-direction: column;
-	}
-	
-	#writing-area, .glyph-area {
-		display: flex;
-		max-width: 600px;
-		flex-wrap: wrap;
-		height: 100%;
-		padding: 12px;
-		margin: 24px;
-		border: 1px solid var(--gray100);
-		border-radius: 8px;
-		overflow-y: scroll;
-		align-content: baseline;
-		box-sizing: border-box;
-	}
-	
-	#title {
-		font-size: 20px;
-	}
-	
-	/* Keyboard */
-	
-	#keyboard {
-		max-width: 500px;
-		margin: 22px 6px;
-		background-color: var(--gray25);
-		justify-content: center;
-		display: none;
-	}
-	
-	#keyboard .key-icon {
-		fill: var(--font-primary);
-		height: calc(0.8 * var(--font-size));
-		width: calc(0.8 * var(--font-size));
-	}
-	
-	#keyboard.keyboard-visible {
-	display: flex;
-	}
-	
-	#keyboard .keyboard-view {
-		display: none;
-	}
-	
-	#keyboard .keyboard-view.view-visible {
-		display: inline-block;
-	}
-	
-	#keyboard .keyboard-row {
-		display: flex;
-		justify-content: center;
-	}
-	
-	#keyboard .key-menu-wrapper {
-		display: flex;
-		position: relative;
-		justify-content: center;
-	}
-	
-	#keyboard .key-menu {
-		position: absolute;
-		top: -55px;
-		display: none;
-	}
-	
-	#keyboard .key-menu.key-menu-visible {
-		display: flex;
-	}
-	
-	#keyboard .menu-key-container {
-		display: flex;
-		position: relative;
-		justify-content: center;
-	}
-	
-	#keyboard .menu-key-container .key-menu {
-		background-color: var(--gray35);
-		border-radius: 4px;
-		display: flex;
-		position: absolute;
-		top: -55px;
-	}
-	
-	#keyboard .key {
-		display: inline-block;
-		background-color: var(--gray50);
-		border-radius: 4px;
-		min-height: 53px;
-		min-width: 34px;
-		margin: 6px 2.5px;
-		box-sizing: border-box;
-		align-content: center;
-		text-align: center;
-	}
-	
-	#keyboard .key:hover,
-	#keyboard .key:focus,
-	#keyboard .key:active {
-		background-color: var(--gray75);
-	}
-	
-	#keyboard .key.char-key {
-		padding-top: 6px;
-	}
-	
-	#keyboard .key.underline-key  {
-		background-color: var(--gray75);
-		min-width: 55px;
-		padding-top: 4px;
-	}
-	
-	#keyboard .key.backspace-key  {
-		background-color: var(--gray75);
-		min-width: 55px;
-		padding-top: 4px;
-	}
-	
-	#keyboard .key.close-keyboard-key {
-		background-color: var(--gray100);
-		border-radius: 27px;
-		min-width: 55px;
-		padding-top: 4px;
-	}
-	
-	#keyboard .key.swap-keyboards-key {
-		border-radius: 27px;
-		min-width: 55px;
-		padding-top: 4px;
-	}
-	
-	#keyboard .key.dot-key {
-		width: 100%;
-		padding-top: 4px;
-	}
-	
-	#keyboard .key.line-key {
-		background-color: var(--gray75);
-		padding-top: 4px;
-	}
-	
-	#keyboard .key.return-key {
-		background-color: var(--gray100);
-		border-radius: 27px;
-		min-width: 55px;
-		padding-top: 4px;
-	}
-	
-	/* Glyph area styles */
-	
-	[glyph-weight="400"] {
-		--weight: calc(5%);
-	}
-	
-	[glyph-weight="500"] {
-		--weight: calc(6%);
-	}
-	
-	[glyph-weight="600"] {
-		--weight: calc(7%);
-	}
-	
-	[glyph-weight="700"] {
-		--weight: calc(8%);
-	}
+	/* Color tokens */
+	--grayscale-0:   #FFFFFF;
+	--grayscale-25:  #F8F8F8;
+	--grayscale-50:  #F3F3F3;
+	--grayscale-75:  #E9E9E9;
+	--grayscale-100: #DEDEDE;
+	--grayscale-150: #CDCDCD;
+	--grayscale-700: #2A2A2A;
 
-	.glyph line,
-	.glyph circle {
-		stroke-width: var(--weight);
-		stroke: var(--font-primary);
-	}
+	/* Surfaces */
+	--surface-0: var(--grayscale-0);
+	--surface-1: var(--grayscale-25);
+	--surface-2: var(--grayscale-50);
+	--surface-3: var(--grayscale-75);
+	--surface-4: var(--grayscale-100);
+	--surface-5: var(--grayscale-150);
+	--surface-overlay: rgba(42, 42, 42, 0.66);
 	
-	.glyph-area .glyph line,
-	.glyph-area .glyph circle {
-		stroke-width: var(--weight);
-		var(--font-primary);
-	}
+	/* Font */
+	--font-primary: var(--grayscale-700);
+}
+
+html {
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-family: 'arial', sans;
 	
-	.glyph-area.glyph-area-active {
-		border: 1px solid blue;
-	}
+	/* Font variables */
+	--font-size: 2em;   
+}
+
+main {
+	height: 100%;
+	width: 100%;
+}
+
+#app {
+	position: relative;
+	display: inline-block;
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+}
+
+.overlay {
+	position: absolute;
+	display: inline-block;
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	background-color: var(--surface-overlay);
+	opacity: 1;
+}
+
+.menu {
+	position: absolute;
+	display: inline-block;
+	box-sizing: border-box;
+	height: 100%;
+	width: 80%;
+	max-width: 500px;
+	left: 0px;
+	top: 0px;
+	background-color: var(--grayscale-0);
+	padding: 24px;
+}
+
+.menu .section {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	border-bottom: 1px solid var(--grayscale-100);
+	padding-bottom: 16px;
+	margin-bottom: 16px;
+}
+
+.menu .section h4 {
+	margin: 0;
+	padding: 0px 16px;
+	font-size: 0.9em;
+}
+
+.menu .section ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.menu .section ul li {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	padding: 12px 16px;
+	cursor: pointer;
+	border-radius: 44px;
+	background-color: var(--grayscale-0);
+	transition: background 0.2s;
+}
+
+.menu .section ul li:hover {
+	background-color: var(--grayscale-75);
+}
+
+.menu .section ul li p {
+	margin: 0;
+}
+
+.menu .icon {
+	height: 1em;
+	width: 1em;
+}
+
+.app-bar {
+	font-size: 1em;
+}
+
+.app-bar .icon-button {
+	display: flex;
+	padding: 0.5em;
+	box-sizing: border-box;
+	width: fit-content;
+	border-radius: 0.75em;
+	transition: background 0.15s;
+	cursor: pointer;
+}
+
+.app-bar .left-actions .icon-button {
+	background-color: var(--grayscale-0);
+}
+
+.app-bar .left-actions .icon-button:hover {
+	background-color: var(--grayscale-50);
+}
+
+.app-bar .right-actions .icon-button {
+	background-color: var(--grayscale-75);
+}
+
+.app-bar .right-actions .icon-button: hover {
+	background-color: var(--grayscale-150);
+}
+
+.app-bar .icon-button .icon {
+	height: 1.5em;
+	width: 1.5em;
+}
+
+#container {
+	width: 100%;
+	height: 100vh;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+#writing-area, .glyph-area {
+	display: flex;
+	max-width: 600px;
+	flex-wrap: wrap;
+	height: 100%;
+	padding: 12px;
+	margin: 24px;
+	border: 1px solid var(--surface-5);
+	border-radius: 8px;
+	overflow-y: scroll;
+	align-content: baseline;
+	box-sizing: border-box;
+}
+
+#title {
+	font-size: 20px;
+}
+
+/* Keyboard */
+
+#keyboard {
+	max-width: 500px;
+	margin: 22px 6px;
+	background-color: var(--surface-1);
+	justify-content: center;
+	display: none;
+}
+
+#keyboard .key-icon {
+	fill: var(--font-primary);
+	height: calc(0.8 * var(--font-size));
+	width: calc(0.8 * var(--font-size));
+}
+
+#keyboard.keyboard-visible {
+display: flex;
+}
+
+#keyboard .keyboard-view {
+	display: none;
+}
+
+#keyboard .keyboard-view.view-visible {
+	display: inline-block;
+}
+
+#keyboard .keyboard-row {
+	display: flex;
+	justify-content: center;
+}
+
+#keyboard .key-menu-wrapper {
+	display: flex;
+	position: relative;
+	justify-content: center;
+}
+
+#keyboard .key-menu {
+	position: absolute;
+	top: -55px;
+	display: none;
+}
+
+#keyboard .key-menu.key-menu-visible {
+	display: flex;
+}
+
+#keyboard .menu-key-container {
+	display: flex;
+	position: relative;
+	justify-content: center;
+}
+
+#keyboard .menu-key-container .key-menu {
+	background-color: var(--surface-2);
+	border-radius: 4px;
+	display: flex;
+	position: absolute;
+	top: -55px;
+}
+
+#keyboard .key {
+	display: inline-block;
+	background-color: var(--surface-3);
+	border-radius: 4px;
+	min-height: 53px;
+	min-width: 34px;
+	margin: 6px 2.5px;
+	box-sizing: border-box;
+	align-content: center;
+	text-align: center;
+}
+
+#keyboard .key:hover,
+#keyboard .key:focus,
+#keyboard .key:active {
+	background-color: var(--surface-4);
+}
+
+#keyboard .key.char-key {
+	padding-top: 6px;
+}
+
+#keyboard .key.underline-key  {
+	background-color: var(--surface-4);
+	min-width: 55px;
+	padding-top: 4px;
+}
+
+#keyboard .key.backspace-key  {
+	background-color: var(--surface-4);
+	min-width: 55px;
+	padding-top: 4px;
+}
+
+#keyboard .key.close-keyboard-key {
+	background-color: var(--surface-5);
+	border-radius: 27px;
+	min-width: 55px;
+	padding-top: 4px;
+}
+
+#keyboard .key.swap-keyboards-key {
+	border-radius: 27px;
+	min-width: 55px;
+	padding-top: 4px;
+}
+
+#keyboard .key.dot-key {
+	width: 100%;
+	padding-top: 4px;
+}
+
+#keyboard .key.line-key {
+	background-color: var(--surface-4);
+	padding-top: 4px;
+}
+
+#keyboard .key.return-key {
+	background-color: var(--surface-5);
+	border-radius: 27px;
+	min-width: 55px;
+	padding-top: 4px;
+}
+
+/* Glyph area styles */
+
+[glyph-weight="400"] {
+	--weight: calc(5%);
+}
+
+[glyph-weight="500"] {
+	--weight: calc(6%);
+}
+
+[glyph-weight="600"] {
+	--weight: calc(7%);
+}
+
+[glyph-weight="700"] {
+	--weight: calc(8%);
+}
+
+.glyph line,
+.glyph circle {
+	stroke-width: var(--weight);
+	stroke: var(--font-primary);
+}
+
+.glyph-area .glyph line,
+.glyph-area .glyph circle {
+	stroke-width: var(--weight);
+	var(--font-primary);
+}
+
+.glyph-area.glyph-area-active {
+	border: 1px solid blue;
+}
+
+.glyph-area .glyph-group {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.cursor {
+	width: calc(var(--font-size) / 20);
+	height: var(--font-size);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.cursor:after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 75%;
+	background-color: black;
+	position: relative;
+	animation: blink 0.8s linear infinite;
+}
+
+@keyframes blink {
+	0%  { opacity: 0; }
+	49% { opacity: 0; }
+	50% { opacity: 1; }
+	99% { opacity: 1; }
+}
+
+/* Character styles */
+/*
+.glyph-area .glyph[char-code="00000000000000000"] {
+	width: 100%;
+	display: inline;
+	height: 30px;
+}*/
+
+.glyph {
+	width: var(--font-size);
+	height: var(--font-size);
+	var(--font-primary);
 	
-	.glyph-area .glyph-group {
-		box-sizing: border-box;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: center;
-	}
+}
+
+.glyph line, .glyph circle {
+	stroke: #000;
+	stroke-width: calc(5%);
+}
 	
-	.cursor {
-		width: calc(var(--font-size) / 20);
-		height: var(--font-size);
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	
-	.cursor:after {
-		content: "";
-		display: block;
-		width: 100%;
-		height: 75%;
-		background-color: black;
-		position: relative;
-		animation: blink 0.8s linear infinite;
-	}
-	
-	@keyframes blink {
-		0%  { opacity: 0; }
-		49% { opacity: 0; }
-		50% { opacity: 1; }
-		99% { opacity: 1; }
-	}
-	
-	/* Character styles */
-	/*
-	.glyph-area .glyph[char-code="00000000000000000"] {
-		width: 100%;
-		display: inline;
-		height: 30px;
-	}*/
-	
-	.glyph {
-		width: var(--font-size);
-		height: var(--font-size);
-		var(--font-primary);
-		
-	}
-	
-	.glyph line, .glyph circle {
-		stroke: #000;
-		stroke-width: calc(5%);
-	}
-		
-	.glyph[style-code*="A0"] .circle,
-	.glyph[style-code*="B0"] .dot-center,
-	.glyph[style-code*="C0"] .overline,
-	.glyph[style-code*="D0"] .angle-left,
-	.glyph[style-code*="E0"] .angle-right,
-	.glyph[style-code*="F0"] .angle-up,
-	.glyph[style-code*="G0"] .angle-down,
-	.glyph[style-code*="H0"] .dot1,
-	.glyph[style-code*="H0"] .dot1-line1,
-	.glyph[style-code*="H0"] .dot1-line2,
-	.glyph[style-code*="H1"] .dot1-line1,
-	.glyph[style-code*="H1"] .dot1-line2,
-	.glyph[style-code*="H2"][style-code*="B0"] .dot1-line2,
-	.glyph[style-code*="H2"][style-code*="B1"] .dot1-line1,
-	.glyph[style-code*="I0"] .dot2,
-	.glyph[style-code*="I0"] .dot2-line1,
-	.glyph[style-code*="I0"] .dot2-line2,
-	.glyph[style-code*="I1"] .dot2-line1,
-	.glyph[style-code*="I1"] .dot2-line2,
-	.glyph[style-code*="I2"][style-code*="B0"] .dot2-line2,
-	.glyph[style-code*="I2"][style-code*="B1"] .dot2-line1,
-	.glyph[style-code*="J0"] .dot3,
-	.glyph[style-code*="J0"] .dot3-line1,
-	.glyph[style-code*="J0"] .dot3-line2,
-	.glyph[style-code*="J1"] .dot3-line1,
-	.glyph[style-code*="J1"] .dot3-line2,
-	.glyph[style-code*="J2"][style-code*="B0"] .dot3-line2,
-	.glyph[style-code*="J2"][style-code*="B1"] .dot3-line1,
-	.glyph[style-code*="K0"] .dot4,
-	.glyph[style-code*="K0"] .dot4-line1,
-	.glyph[style-code*="K0"] .dot4-line2,
-	.glyph[style-code*="K1"] .dot4-line1,
-	.glyph[style-code*="K1"] .dot4-line2,
-	.glyph[style-code*="K2"][style-code*="B0"] .dot4-line2,
-	.glyph[style-code*="K2"][style-code*="B1"] .dot4-line1,
-	.glyph[style-code*="L0"] .dot5,
-	.glyph[style-code*="L0"] .dot5-line1,
-	.glyph[style-code*="L0"] .dot5-line2,
-	.glyph[style-code*="L1"] .dot5-line1,
-	.glyph[style-code*="L1"] .dot5-line2,
-	.glyph[style-code*="L2"][style-code*="B0"] .dot5-line2,
-	.glyph[style-code*="L2"][style-code*="B1"] .dot5-line1,
-	.glyph[style-code*="M0"] .up-down-1,
-	.glyph[style-code*="M0"] .up-down-2,
-	.glyph[style-code*="M1"] .up-down-2,
-	.glyph[style-code*="M2"] .up-down-1,
-	.glyph[style-code*="N0"] .left-right-1,
-	.glyph[style-code*="N0"] .left-right-2,
-	.glyph[style-code*="N1"] .left-right-2,
-	.glyph[style-code*="N2"] .left-right-1,
-	.glyph[style-code*="O0"] .diag-down-1,
-	.glyph[style-code*="O0"] .diag-down-2,
-	.glyph[style-code*="O1"] .diag-down-2,
-	.glyph[style-code*="O2"] .diag-down-1,
-	.glyph[style-code*="P0"] .diag-up-1,
-	.glyph[style-code*="P0"] .diag-up-2,
-	.glyph[style-code*="P1"] .diag-up-2,
-	.glyph[style-code*="P2"] .diag-up-1,
-	.glyph[style-code*="Q0"] .underline-1,
-	.glyph[style-code*="Q0"] .underline-2,
-	.glyph[style-code*="Q1"] .underline-2 {
-		display: none;
-	}
-	
-	.glyph[style-code*="A1"] .circle,
-	.glyph[style-code*="B1"] .dot-center,
-	.glyph[style-code*="C1"] .overline,
-	.glyph[style-code*="D1"] .angle-left,
-	.glyph[style-code*="E1"] .angle-right,
-	.glyph[style-code*="F1"] .angle-up,
-	.glyph[style-code*="G1"] .angle-down,
-	.glyph[style-code*="H1"] .dot1,
-	.glyph[style-code*="H2"][style-code*="B0"] .dot1,
-	.glyph[style-code*="H2"][style-code*="B0"] .dot1-line1,
-	.glyph[style-code*="H2"][style-code*="B1"] .dot1,
-	.glyph[style-code*="H2"][style-code*="B1"] .dot1-line2,
-	.glyph[style-code*="I1"] .dot2,
-	.glyph[style-code*="I2"][style-code*="B0"] .dot2,
-	.glyph[style-code*="I2"][style-code*="B0"] .dot2-line1,
-	.glyph[style-code*="I2"][style-code*="B1"] .dot2,
-	.glyph[style-code*="I2"][style-code*="B1"] .dot2-line2,
-	.glyph[style-code*="J1"] .dot3,
-	.glyph[style-code*="J2"][style-code*="B0"] .dot3,
-	.glyph[style-code*="J2"][style-code*="B0"] .dot3-line1,
-	.glyph[style-code*="J2"][style-code*="B1"] .dot3,
-	.glyph[style-code*="J2"][style-code*="B1"] .dot3-line2,
-	.glyph[style-code*="K1"] .dot4,
-	.glyph[style-code*="K2"][style-code*="B0"] .dot4,
-	.glyph[style-code*="K2"][style-code*="B0"] .dot4-line1,
-	.glyph[style-code*="K2"][style-code*="B1"] .dot4,
-	.glyph[style-code*="K2"][style-code*="B1"] .dot4-line2,
-	.glyph[style-code*="L1"] .dot5,
-	.glyph[style-code*="L2"][style-code*="B0"] .dot5,
-	.glyph[style-code*="L2"][style-code*="B0"] .dot5-line1,
-	.glyph[style-code*="L2"][style-code*="B1"] .dot5,
-	.glyph[style-code*="L2"][style-code*="B1"] .dot5-line2,
-	.glyph[style-code*="M1"] .up-down-1,
-	.glyph[style-code*="M2"] .up-down-2,
-	.glyph[style-code*="N1"] .left-right-1,
-	.glyph[style-code*="N2"] .left-right-2,
-	.glyph[style-code*="O1"] .diag-down-1,
-	.glyph[style-code*="O2"] .diag-down-2,
-	.glyph[style-code*="P1"] .diag-up-1,
-	.glyph[style-code*="P2"] .diag-up-2,
-	.glyph[style-code*="Q1"] .underline-1,
-	.glyph[style-code*="Q2"] .underline-1,
-	.glyph[style-code*="Q2"] .underline-2 {
-		display: inline-block;
-	}
-	
-	.glyph[style-code*="D1"] circle,
-	.glyph[style-code*="E1"] circle,
-	.glyph[style-code*="F1"] circle,
-	.glyph[style-code*="G1"] circle {
-		r: 25%;
-	}
+.glyph[style-code*="A0"] .circle,
+.glyph[style-code*="B0"] .dot-center,
+.glyph[style-code*="C0"] .overline,
+.glyph[style-code*="D0"] .angle-left,
+.glyph[style-code*="E0"] .angle-right,
+.glyph[style-code*="F0"] .angle-up,
+.glyph[style-code*="G0"] .angle-down,
+.glyph[style-code*="H0"] .dot1,
+.glyph[style-code*="H0"] .dot1-line1,
+.glyph[style-code*="H0"] .dot1-line2,
+.glyph[style-code*="H1"] .dot1-line1,
+.glyph[style-code*="H1"] .dot1-line2,
+.glyph[style-code*="H2"][style-code*="B0"] .dot1-line2,
+.glyph[style-code*="H2"][style-code*="B1"] .dot1-line1,
+.glyph[style-code*="I0"] .dot2,
+.glyph[style-code*="I0"] .dot2-line1,
+.glyph[style-code*="I0"] .dot2-line2,
+.glyph[style-code*="I1"] .dot2-line1,
+.glyph[style-code*="I1"] .dot2-line2,
+.glyph[style-code*="I2"][style-code*="B0"] .dot2-line2,
+.glyph[style-code*="I2"][style-code*="B1"] .dot2-line1,
+.glyph[style-code*="J0"] .dot3,
+.glyph[style-code*="J0"] .dot3-line1,
+.glyph[style-code*="J0"] .dot3-line2,
+.glyph[style-code*="J1"] .dot3-line1,
+.glyph[style-code*="J1"] .dot3-line2,
+.glyph[style-code*="J2"][style-code*="B0"] .dot3-line2,
+.glyph[style-code*="J2"][style-code*="B1"] .dot3-line1,
+.glyph[style-code*="K0"] .dot4,
+.glyph[style-code*="K0"] .dot4-line1,
+.glyph[style-code*="K0"] .dot4-line2,
+.glyph[style-code*="K1"] .dot4-line1,
+.glyph[style-code*="K1"] .dot4-line2,
+.glyph[style-code*="K2"][style-code*="B0"] .dot4-line2,
+.glyph[style-code*="K2"][style-code*="B1"] .dot4-line1,
+.glyph[style-code*="L0"] .dot5,
+.glyph[style-code*="L0"] .dot5-line1,
+.glyph[style-code*="L0"] .dot5-line2,
+.glyph[style-code*="L1"] .dot5-line1,
+.glyph[style-code*="L1"] .dot5-line2,
+.glyph[style-code*="L2"][style-code*="B0"] .dot5-line2,
+.glyph[style-code*="L2"][style-code*="B1"] .dot5-line1,
+.glyph[style-code*="M0"] .up-down-1,
+.glyph[style-code*="M0"] .up-down-2,
+.glyph[style-code*="M1"] .up-down-2,
+.glyph[style-code*="M2"] .up-down-1,
+.glyph[style-code*="N0"] .left-right-1,
+.glyph[style-code*="N0"] .left-right-2,
+.glyph[style-code*="N1"] .left-right-2,
+.glyph[style-code*="N2"] .left-right-1,
+.glyph[style-code*="O0"] .diag-down-1,
+.glyph[style-code*="O0"] .diag-down-2,
+.glyph[style-code*="O1"] .diag-down-2,
+.glyph[style-code*="O2"] .diag-down-1,
+.glyph[style-code*="P0"] .diag-up-1,
+.glyph[style-code*="P0"] .diag-up-2,
+.glyph[style-code*="P1"] .diag-up-2,
+.glyph[style-code*="P2"] .diag-up-1,
+.glyph[style-code*="Q0"] .underline-1,
+.glyph[style-code*="Q0"] .underline-2,
+.glyph[style-code*="Q1"] .underline-2 {
+	display: none;
+}
+
+.glyph[style-code*="A1"] .circle,
+.glyph[style-code*="B1"] .dot-center,
+.glyph[style-code*="C1"] .overline,
+.glyph[style-code*="D1"] .angle-left,
+.glyph[style-code*="E1"] .angle-right,
+.glyph[style-code*="F1"] .angle-up,
+.glyph[style-code*="G1"] .angle-down,
+.glyph[style-code*="H1"] .dot1,
+.glyph[style-code*="H2"][style-code*="B0"] .dot1,
+.glyph[style-code*="H2"][style-code*="B0"] .dot1-line1,
+.glyph[style-code*="H2"][style-code*="B1"] .dot1,
+.glyph[style-code*="H2"][style-code*="B1"] .dot1-line2,
+.glyph[style-code*="I1"] .dot2,
+.glyph[style-code*="I2"][style-code*="B0"] .dot2,
+.glyph[style-code*="I2"][style-code*="B0"] .dot2-line1,
+.glyph[style-code*="I2"][style-code*="B1"] .dot2,
+.glyph[style-code*="I2"][style-code*="B1"] .dot2-line2,
+.glyph[style-code*="J1"] .dot3,
+.glyph[style-code*="J2"][style-code*="B0"] .dot3,
+.glyph[style-code*="J2"][style-code*="B0"] .dot3-line1,
+.glyph[style-code*="J2"][style-code*="B1"] .dot3,
+.glyph[style-code*="J2"][style-code*="B1"] .dot3-line2,
+.glyph[style-code*="K1"] .dot4,
+.glyph[style-code*="K2"][style-code*="B0"] .dot4,
+.glyph[style-code*="K2"][style-code*="B0"] .dot4-line1,
+.glyph[style-code*="K2"][style-code*="B1"] .dot4,
+.glyph[style-code*="K2"][style-code*="B1"] .dot4-line2,
+.glyph[style-code*="L1"] .dot5,
+.glyph[style-code*="L2"][style-code*="B0"] .dot5,
+.glyph[style-code*="L2"][style-code*="B0"] .dot5-line1,
+.glyph[style-code*="L2"][style-code*="B1"] .dot5,
+.glyph[style-code*="L2"][style-code*="B1"] .dot5-line2,
+.glyph[style-code*="M1"] .up-down-1,
+.glyph[style-code*="M2"] .up-down-2,
+.glyph[style-code*="N1"] .left-right-1,
+.glyph[style-code*="N2"] .left-right-2,
+.glyph[style-code*="O1"] .diag-down-1,
+.glyph[style-code*="O2"] .diag-down-2,
+.glyph[style-code*="P1"] .diag-up-1,
+.glyph[style-code*="P2"] .diag-up-2,
+.glyph[style-code*="Q1"] .underline-1,
+.glyph[style-code*="Q2"] .underline-1,
+.glyph[style-code*="Q2"] .underline-2 {
+	display: inline-block;
+}
+
+.glyph[style-code*="D1"] circle,
+.glyph[style-code*="E1"] circle,
+.glyph[style-code*="F1"] circle,
+.glyph[style-code*="G1"] circle {
+	r: 25%;
+}
